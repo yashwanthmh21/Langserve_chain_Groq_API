@@ -11,7 +11,7 @@ api_key = os.getenv("GROQ_API_KEY")
 print(f"Groq API Key: {api_key is not None}")
 print("Groq API Key loaded")
 
-# Use compound-mini without groq/ prefix
+# Use compound-mini as the model for testing
 model = ChatGroq(model="groq/compound-mini", groq_api_key=api_key)
 
 # Test the model
@@ -40,11 +40,11 @@ app = FastAPI(
     description="A simple API server using Langchain runnable interfaces"
 )
 
-# Adding chain routes - THIS MUST SAY "/chain"
+# Adding chain routes 
 add_routes(
     app,
     chain,
-    path="/chain"  # ← VERIFY THIS LINE
+    path="/chain" 
 )
 
 if __name__ == "__main__":
